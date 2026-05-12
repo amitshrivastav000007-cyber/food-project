@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Food Hub | Order on WhatsApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --white: #ffffff;
+            --whatsapp-green: #25D366;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--dark-bg); color: var(--white); }
+
+        /* Navigation */
+        nav {
+            background: rgba(0,0,0,0.9);
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gold);
+        }
+        .logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.8rem; text-decoration: none; font-weight: bold; }
+
+        /* Hero */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--gold); text-align: center; }
+
+        /* Menu */
+        .menu-section { padding: 80px 10%; }
+        .section-title { text-align: center; font-size: 2.5rem; color: var(--gold); margin-bottom: 40px; font-family: 'Playfair Display', serif; }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        
+        /* Fixed Image Container - Updated for Full Visibility */
+        .img-box { 
+            width: 100%; 
+            height: 220px; 
+            overflow: hidden; 
+            background: #000; /* Black background for letterboxing if image ratio differs */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .img-box img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; /* This ensures the full image is visible */
+        }
+        
+        .card-content { padding: 20px; text-align: center; }
+        .item-name { font-size: 1.3rem; margin-bottom: 10px; color: var(--gold); }
+        .item-desc { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; height: 45px; overflow: hidden; }
+        .item-price { font-size: 1.4rem; font-weight: bold; margin-bottom: 20px; display: block; }
+
+        .order-btn {
+            background: var(--whatsapp-green);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .order-btn:hover { background: #1ebd5b; transform: scale(1.05); }
+
+        footer { text-align: center; padding: 40px; background: #000; border-top: 1px solid #222; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">AMIT FOOD HUB</a>
+        <div style="color: var(--gold); font-weight: bold;">Order: 8920481174</div>
+    </nav>
+
+    <section class="hero">
+        <h1>Delicious Food Delivered</h1>
+        <p style="letter-spacing: 2px; color: #fff;">AMIT FOOD HUB SPECIALS</p>
+    </section>
+
+    <section class="menu-section">
+        <h2 class="section-title">Our Menu</h2>
+        
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=80" alt="Paneer Tikka">
+                </div>
+                <div class="card-content">
+                    <h3 class="item-name">Special Paneer Tikka</h3>
+                    <p class="item-desc">Tandoori Grilled cottage cheese with spices.</p>
+                    <span class="item-price">₹250</span>
+                    <button class="order-btn" onclick="sendWhatsApp('Special Paneer Tikka', '250')">Order on WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80" alt="Chicken Biryani">
+                </div>
+                <div class="card-content">
+                    <h3 class="item-name">Chicken Dum Biryani</h3>
+                    <p class="item-desc">Aromatic basmati rice with juicy chicken layers.</p>
+                    <span class="item-price">₹350</span>
+                    <button class="order-btn" onclick="sendWhatsApp('Chicken Dum Biryani', '350')">Order on WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80" alt="Pizza">
+                </div>
+                <div class="card-content">
+                    <h3 class="item-name">Farmhouse Pizza</h3>
+                    <p class="item-desc">Fresh veggies with extra cheese topping.</p>
+                    <span class="item-price">₹299</span>
+                    <button class="order-btn" onclick="sendWhatsApp('Farmhouse Pizza', '299')">Order on WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="Burger">
+                </div>
+                <div class="card-content">
+                    <h3 class="item-name">Maharaja Veg Burger</h3>
+                    <p class="item-desc">Double patty burger with special Amit sauce.</p>
+                    <span class="item-price">₹150</span>
+                    <button class="order-btn" onclick="sendWhatsApp('Maharaja Veg Burger', '150')">Order on WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="color: var(--gold);">Amit Food Hub &copy; 2026</p>
+    </footer>
+
+    <script>
+        function sendWhatsApp(itemName, price) {
+            const phoneNumber = "918920481174"; 
+            const message = `Namaste Amit Food Hub! 👋%0A%0AI want to order:%0A✅ *${itemName}*%0A💰 Price: *₹${price}*%0A%0APlease confirm my order.`;
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+
+</body>
+</html>
